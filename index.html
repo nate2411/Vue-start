@@ -6,13 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning Vue</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
    <h1>Hello, Vue 😄</h1> 
    
 
    <div id="app">
-      <div v-if="showBooks "> <p>{{title}} - {{author}} - {{age}}</p></div>
+      <div v-if="showBooks ">
+         <ul>
+            <li v-for="book in books">
+               <h3>{{book.title}}</h3>
+               <p>{{book.author}}</p>
+            </li>
+         </ul>
+      </div>
 
        <button v-on:click="age++">Increase age</button>
        <button v-on:click="age--">Decrease age</button>
@@ -25,8 +33,15 @@
           
         </button>
         <div v-show="showBooks"> currently showing book</div>
-       
+       <br>
+
+       <div class="box" @mouseover="handletEvent">Mouseover (enter)</div>
+       <div class="box" @mouseleave="handletEvent">mouseleave</div>
+       <div class="box"@dblclick="handletEvent">double click</div>
+       <div class="box" @mousemove="handleMousemove">Position - {{ x}} {{y}}</div>
    </div>
+
+   <br>
 
 
    <script src="app.js"></script>
